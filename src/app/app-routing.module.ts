@@ -1,23 +1,19 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { HomeComponent } from './pages/home/home.component';
-import { LoginComponent } from './pages/login/login.component';
-import { MainComponent } from './pages/main/main.component';
+
+import RoutesConfig from './configs/routes';
 
 const routes: Routes = [
   {
-    path: 'login',
-    component: LoginComponent,
+    path: RoutesConfig.login.path,
+    data: RoutesConfig.login.data,
+    component: RoutesConfig.login.component,
   },
   {
-    path: '',
-    component: MainComponent,
-    children: [
-      {
-        path: '',
-        component: HomeComponent,
-      },
-    ],
+    path: RoutesConfig.main.path,
+    data: RoutesConfig.main.data,
+    children: RoutesConfig.main.children,
+    component: RoutesConfig.main.component,
   },
 ];
 
