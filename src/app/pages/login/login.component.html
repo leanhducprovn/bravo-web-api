@@ -1,1 +1,36 @@
-Hi
+<div class="container">
+  <div class="vh-100 d-flex align-items-center justify-content-center">
+    <div class="row col-sm-6">
+      <h2 class="text-center">Đăng nhập</h2>
+      <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+        <div class="form-group mt-2">
+          <label for="username">Tài khoản</label>
+          <input type="text" formControlName="username" class="form-control shadow-sm bg-white rounded"
+            [ngClass]="{ 'is-invalid': submitted && form.username.errors }" />
+          <div *ngIf="submitted && form.username.errors" class="invalid-feedback">
+            <div *ngIf="form.username.errors.required">
+              Tài khoản không được bỏ trống
+            </div>
+          </div>
+        </div>
+        <div class="form-group mt-2">
+          <label for="password">Mật khẩu</label>
+          <input type="password" formControlName="password" class="form-control shadow-sm bg-white rounded"
+            [ngClass]="{ 'is-invalid': submitted && form.password.errors }" />
+          <div *ngIf="submitted && form.password.errors" class="invalid-feedback">
+            <div *ngIf="form.password.errors.required">
+              Mật khẩu không được bỏ trống
+            </div>
+          </div>
+        </div>
+        <div class="form-group mt-2 d-flex justify-content-end mt-3">
+          <button [disabled]="true" class="btn btn-light me-2 shadow-lg bg-white rounded">Đăng ký</button>
+          <button [disabled]="loading" class="btn btn-dark shadow-lg bg-black rounded">
+            <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
+            Đăng nhập
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
