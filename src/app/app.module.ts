@@ -31,10 +31,10 @@ import { MainComponent } from './pages/main/main.component';
     NotifierModule.withConfig({
       position: {
         horizontal: {
-          position: 'right',
+          position: 'left',
         },
         vertical: {
-          position: 'top',
+          position: 'bottom',
         },
       },
     }),

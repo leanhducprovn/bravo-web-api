@@ -25,7 +25,11 @@ export class LoginComponent implements OnInit {
     private noti: NotifierService,
     private route: ActivatedRoute,
     private router: Router
-  ) {}
+  ) {
+    if (localStorage.getItem('token')) {
+      this.router.navigate(['/']);
+    }
+  }
 
   public ngOnInit(): void {
     this.loginForm = this.fb.group({
@@ -52,8 +56,8 @@ export class LoginComponent implements OnInit {
       });
       setTimeout(() => {
         this.http.post(_url, _params).subscribe(
-          (response) => {
-            console.log(response);
+          (response: any) => {
+            localStorage.setItem('token', response.access_token);
           },
           (error) => {
             this.loading = false;
