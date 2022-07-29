@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router, ActivatedRoute } from '@angular/router';
+import { NotifierService } from 'angular-notifier';
 
 @Component({
   selector: 'app-login',
@@ -11,18 +13,27 @@ export class LoginComponent implements OnInit {
   public loginForm: FormGroup;
   public loading = false;
   public submitted = false;
+  private _returnUrl: string;
 
   public get form() {
     return this.loginForm.controls;
   }
 
-  public constructor(private http: HttpClient, private fb: FormBuilder) {}
+  public constructor(
+    private http: HttpClient,
+    private fb: FormBuilder,
+    private noti: NotifierService,
+    private route: ActivatedRoute,
+    private router: Router
+  ) {}
 
   public ngOnInit(): void {
     this.loginForm = this.fb.group({
       username: ['', Validators.required],
       password: ['', Validators.required],
     });
+
+    this._returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
   }
 
   public onSubmit() {
@@ -39,23 +50,22 @@ export class LoginComponent implements OnInit {
           grant_type: 'password',
         },
       });
-      this.http.post(_url, _params).subscribe(
-        (response) => {
-          console.log(response);
-        },
-        (error) => {
-          setTimeout(() => {
+      setTimeout(() => {
+        this.http.post(_url, _params).subscribe(
+          (response) => {
+            console.log(response);
+          },
+          (error) => {
             this.loading = false;
-          }, 500);
-          console.log('Tài khoản hoặc mật khẩu không đúng!');
-        },
-        () => {
-          setTimeout(() => {
+            this.noti.notify('error', 'Tài khoản hoặc mật khẩu không đúng!');
+          },
+          () => {
             this.loading = false;
-          }, 500);
-          console.log('Đăng nhập thành công!');
-        }
-      );
+            this.noti.notify('success', 'Đăng nhập thành công!');
+            this.router.navigate([this._returnUrl]);
+          }
+        );
+      }, 500);
     }
   }
 }
