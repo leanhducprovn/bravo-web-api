@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NotifierService } from 'angular-notifier';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-header',
@@ -9,12 +10,16 @@ import { NotifierService } from 'angular-notifier';
 export class HeaderComponent implements OnInit {
   public isToken!: boolean;
 
-  constructor(private noti: NotifierService) {}
+  constructor(private noti: NotifierService, private router: Router) {}
 
   public ngOnInit(): void {
     if (localStorage.getItem('token')) {
       this.isToken = true;
     }
+  }
+
+  public login() {
+    this.router.navigate(['/login']);
   }
 
   public logout() {
