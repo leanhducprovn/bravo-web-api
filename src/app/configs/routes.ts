@@ -1,3 +1,4 @@
+import { ExecuteComponent } from '../pages/bravowebapi/execute/execute.component';
 import { HomeComponent } from '../pages/home/home.component';
 import { LoginComponent } from '../pages/login/login.component';
 import { MainComponent } from '../pages/main/main.component';
@@ -23,6 +24,13 @@ const RoutesConfig = {
           title: 'Home',
         },
         component: HomeComponent,
+      },
+      {
+        path: 'execute',
+        data: {
+          title: 'Execute',
+        },
+        component: ExecuteComponent,
       },
     ],
     component: MainComponent,

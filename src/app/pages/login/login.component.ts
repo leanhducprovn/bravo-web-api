@@ -26,7 +26,7 @@ export class LoginComponent implements OnInit {
     private route: ActivatedRoute,
     private router: Router
   ) {
-    if (localStorage.getItem('token')) {
+    if (localStorage.getItem('logged')) {
       this.router.navigate(['/']);
     }
   }
@@ -57,7 +57,7 @@ export class LoginComponent implements OnInit {
       setTimeout(() => {
         this.http.post(_url, _params).subscribe(
           (response: any) => {
-            localStorage.setItem('token', response.access_token);
+            localStorage.setItem('logged', JSON.stringify(true));
           },
           (error) => {
             this.loading = false;

@@ -12,6 +12,7 @@ import { FooterComponent } from './layouts/footer/footer.component';
 import { HomeComponent } from './pages/home/home.component';
 import { LoginComponent } from './pages/login/login.component';
 import { MainComponent } from './pages/main/main.component';
+import { ExecuteComponent } from './pages/bravowebapi/execute/execute.component';
 
 @NgModule({
   declarations: [
@@ -22,6 +23,7 @@ import { MainComponent } from './pages/main/main.component';
     HomeComponent,
     LoginComponent,
     MainComponent,
+    ExecuteComponent,
   ],
   imports: [
     BrowserModule,

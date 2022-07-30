@@ -29,13 +29,14 @@
             <li><a class='dropdown-item' routerLink="/">All</a></li>
           </ul>
         </li>
+        <li class="nav-item"><a (click)="onExecute()" style="cursor: pointer;" class="nav-link">Execute</a></li>
         <li class="nav-item"><a class="nav-link disabled" routerLink="/">Disabled</a></li>
       </ul>
       <!-- Left links -->
     </div>
     <!-- Collapsible wrapper -->
     <!-- Right elements -->
-    <div *ngIf="isToken; else loggin" class="d-flex align-items-center">
+    <div *ngIf="isLogin; else loggin" class="d-flex align-items-center">
       <!-- Icon -->
       <a class="text-reset me-3" routerLink="/"><i class="fas fa-shopping-cart"></i></a>
       <!-- Notifications -->
@@ -62,13 +63,13 @@
         <li>
           <hr class='dropdown-divider' />
         </li>
-        <li><a class="dropdown-item" (click)="logout()">Đăng xuất</a></li>
+        <li><a class="dropdown-item" (click)="onLogout()">Đăng xuất</a></li>
       </ul>
     </div>
     <ng-template #loggin>
       <div class="d-flex justify-content-end">
         <button [disabled]="true" class="btn btn-light me-2">Đăng ký</button>
-        <button (click)="login()" type="button" class="btn btn-dark">Đăng nhập</button>
+        <button (click)="onLogin()" type="button" class="btn btn-dark">Đăng nhập</button>
       </div>
     </ng-template>
     <!-- Right elements -->
