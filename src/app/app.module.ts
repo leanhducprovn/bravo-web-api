@@ -14,6 +14,7 @@ import { LoginComponent } from './pages/login/login.component';
 import { MainComponent } from './pages/main/main.component';
 import { ExecuteComponent } from './pages/bravowebapi/execute/execute.component';
 import { BackToTopComponent } from './utilities/back-to-top/back-to-top.component';
+import { ProductComponent } from './pages/bravowebapi/product/product.component';
 
 @NgModule({
   declarations: [
@@ -26,6 +27,7 @@ import { BackToTopComponent } from './utilities/back-to-top/back-to-top.componen
     MainComponent,
     ExecuteComponent,
     BackToTopComponent,
+    ProductComponent,
   ],
   imports: [
     BrowserModule,
