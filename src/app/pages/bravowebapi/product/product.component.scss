@@ -1,0 +1,16 @@
+tbody,
+td,
+tfoot,
+th,
+thead,
+tr {
+    border-width: thin !important;
+}
+
+.page-item {
+    &.active {
+        .page-link {
+            background-color: #119489 !important;
+        }
+    }
+}
