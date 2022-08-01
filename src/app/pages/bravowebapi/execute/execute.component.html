@@ -36,8 +36,8 @@
         <div *ngIf="loading" class="form-group text-center">
           <img style="width: 100px" src="./assets/images/ellipsis-loading.svg" alt="loading">
         </div>
-        <div *ngIf="jsonData" class="form-group mt-4">
-          <pre><code>{{ jsonData }}</code></pre>
+        <div *ngIf="jsonData" class="form-group note note-light mt-4" style="height: calc(100vh - 300px)">
+          <pre style="height: 100%"><code>{{ jsonData }}</code></pre>
         </div>
       </div>
     </div>
