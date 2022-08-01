@@ -38,9 +38,9 @@
     <!-- Right elements -->
     <div *ngIf="isLogin; else loggin" class="d-flex align-items-center">
       <!-- Icon -->
-      <a class="text-reset me-3" routerLink="/"><i class="fas fa-shopping-cart"></i></a>
+      <a class="text-reset me-3" routerLink="#"><i class="fas fa-shopping-cart"></i></a>
       <!-- Notifications -->
-      <a class="text-reset me-3 dropdown-toggle hidden-arrow" routerLink="/" id="navbarDropdownMenuLink" role="button"
+      <a class="text-reset me-3 dropdown-toggle hidden-arrow" routerLink="#" id="navbarDropdownMenuLink" role="button"
         data-mdb-toggle="dropdown" aria-expanded="false">
         <i class="fas fa-bell"></i>
         <span class="badge rounded-pill badge-notification bg-danger">3</span>
@@ -69,7 +69,7 @@
     <ng-template #loggin>
       <div class="d-flex justify-content-end">
         <button [disabled]="true" class="btn btn-light me-2">Đăng ký</button>
-        <button (click)="onLogin()" type="button" class="btn btn-dark">Đăng nhập</button>
+        <button (click)="onLogin()" type="button" class="btn btn-success">Đăng nhập</button>
       </div>
     </ng-template>
     <!-- Right elements -->

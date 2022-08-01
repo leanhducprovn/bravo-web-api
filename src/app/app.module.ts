@@ -13,6 +13,7 @@ import { HomeComponent } from './pages/home/home.component';
 import { LoginComponent } from './pages/login/login.component';
 import { MainComponent } from './pages/main/main.component';
 import { ExecuteComponent } from './pages/bravowebapi/execute/execute.component';
+import { BackToTopComponent } from './utilities/back-to-top/back-to-top.component';
 
 @NgModule({
   declarations: [
@@ -24,6 +25,7 @@ import { ExecuteComponent } from './pages/bravowebapi/execute/execute.component'
     LoginComponent,
     MainComponent,
     ExecuteComponent,
+    BackToTopComponent,
   ],
   imports: [
     BrowserModule,
