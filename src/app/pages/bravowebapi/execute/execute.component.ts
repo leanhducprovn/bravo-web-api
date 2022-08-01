@@ -14,6 +14,7 @@ export class ExecuteComponent implements OnInit {
   public loading = false;
   public submitted = false;
   public jsonData!: object;
+  public isMessage: boolean;
 
   public get form() {
     return this.searchForm.controls;
@@ -76,12 +77,14 @@ export class ExecuteComponent implements OnInit {
               .post(_urlExecute, _paramsExecute, { headers: _headerExecute })
               .subscribe(
                 (response: any) => {
-                  if (response[0].Message != '') {
-                    _isData = false;
-                    this.jsonData = null;
-                  } else {
+                  if (response[0].Message == '') {
                     _isData = true;
+                    this.isMessage = false;
                     this.jsonData = response[0].JsonData;
+                  } else {
+                    _isData = false;
+                    this.isMessage = true;
+                    this.jsonData = response[0].Message;
                   }
                 },
                 (error) => {},

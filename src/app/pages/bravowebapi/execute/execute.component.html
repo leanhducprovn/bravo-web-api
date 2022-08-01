@@ -35,7 +35,8 @@
         <div *ngIf="loading" class="form-group text-center">
           <img style="width: 100px" src="./assets/images/ellipsis-loading.svg" alt="loading">
         </div>
-        <div *ngIf="jsonData" class="form-group note note-light mt-4" style="height: calc(100vh - 300px)">
+        <div *ngIf="jsonData" [class]="isMessage ? 'note-danger' : 'note-success'" class="form-group note mt-4"
+          [ngStyle]="{'height': isMessage ? 'auto' : 'calc(100vh - 300px)'}">
           <pre style="height: 100%"><code>{{ jsonData }}</code></pre>
         </div>
       </div>
