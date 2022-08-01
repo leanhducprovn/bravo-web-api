@@ -15,8 +15,7 @@
           </div>
           <div class="form-group mt-2">
             <label for="SurveyCampaignId">Survey Campaign ID</label>
-            <input type="SurveyCampaignId" formControlName="SurveyCampaignId"
-              class="form-control shadow-sm bg-white rounded"
+            <input type="text" formControlName="SurveyCampaignId" class="form-control shadow-sm bg-white rounded"
               [ngClass]="{ 'is-invalid': submitted && form.SurveyCampaignId.errors }" />
             <div *ngIf="submitted && form.SurveyCampaignId.errors" class="invalid-feedback">
               <div *ngIf="form.SurveyCampaignId.errors.required">

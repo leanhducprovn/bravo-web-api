@@ -45,6 +45,7 @@ export class ExecuteComponent implements OnInit {
 
   public onSearch() {
     this.submitted = true;
+    this.jsonData = null;
     if (this.searchForm.invalid) {
       return;
     } else {
