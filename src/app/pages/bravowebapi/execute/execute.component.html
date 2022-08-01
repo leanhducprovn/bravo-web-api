@@ -33,8 +33,11 @@
             </button>
           </div>
         </form>
+        <div *ngIf="loading" class="form-group text-center">
+          <img style="width: 100px" src="./assets/images/ellipsis-loading.svg" alt="loading">
+        </div>
         <div *ngIf="jsonData" class="form-group mt-4">
-          {{ jsonData }}
+          <pre><code>{{ jsonData }}</code></pre>
         </div>
       </div>
     </div>

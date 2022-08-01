@@ -1,6 +1,7 @@
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { NotifierService } from 'angular-notifier';
 
 @Component({
@@ -21,8 +22,13 @@ export class ExecuteComponent implements OnInit {
   constructor(
     private http: HttpClient,
     private fb: FormBuilder,
+    private router: Router,
     private noti: NotifierService
-  ) {}
+  ) {
+    if (!localStorage.getItem('logged')) {
+      this.router.navigate(['/login']);
+    }
+  }
 
   public ngOnInit(): void {
     this.searchForm = this.fb.group({
