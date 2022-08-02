@@ -25,9 +25,10 @@
         </div>
         <div class="form-group mt-2 d-flex justify-content-end mt-3">
           <button [disabled]="true" class="btn btn-light me-2 shadow-lg bg-white rounded">Đăng ký</button>
-          <button [disabled]="loading" class="btn btn-success shadow-lg bg-black rounded">
+          <button (click)="loading ? onCancel() : true" [class]="loading ? 'btn-danger' : 'btn-success'"
+            class="btn shadow-lg rounded">
             <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
-            Đăng nhập
+            {{ loading ? "Hủy" + " " + "(" + counter + ")" : "Đăng nhập" }}
           </button>
         </div>
       </form>
