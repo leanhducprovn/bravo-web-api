@@ -15,6 +15,15 @@ const routes: Routes = [
     children: RoutesConfig.main.children,
     component: RoutesConfig.main.component,
   },
+  {
+    path: RoutesConfig[404].path,
+    data: RoutesConfig[404].data,
+    component: RoutesConfig[404].component,
+  },
+  {
+    path: RoutesConfig.error.path,
+    redirectTo: RoutesConfig.error.redirectTo,
+  },
 ];
 
 @NgModule({

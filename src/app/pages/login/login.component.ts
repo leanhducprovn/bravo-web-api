@@ -3,6 +3,7 @@ import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
 import { NotifierService } from 'angular-notifier';
+import { map, timeout } from 'rxjs/operators';
 
 @Component({
   selector: 'app-login',
@@ -54,9 +55,12 @@ export class LoginComponent implements OnInit {
           grant_type: 'password',
         },
       });
-      setTimeout(() => {
-        this.http.post(_url, _params).subscribe(
-          (response: any) => {
+      // setTimeout(() => {
+      this.http
+        .post(_url, _params)
+        .pipe(timeout(3000))
+        .subscribe(
+          (response) => {
             localStorage.setItem('logged', JSON.stringify(true));
           },
           (error) => {
@@ -69,7 +73,7 @@ export class LoginComponent implements OnInit {
             this.router.navigate([this._returnUrl]);
           }
         );
-      }, 500);
+      // }, 500);
     }
   }
 }

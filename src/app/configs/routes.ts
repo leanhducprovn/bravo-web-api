@@ -3,6 +3,7 @@ import { ProductComponent } from '../pages/bravowebapi/product/product.component
 import { HomeComponent } from '../pages/home/home.component';
 import { LoginComponent } from '../pages/login/login.component';
 import { MainComponent } from '../pages/main/main.component';
+import { PageNotFoundComponent } from '../pages/page-not-found/page-not-found.component';
 
 const RoutesConfig = {
   login: {
@@ -11,6 +12,19 @@ const RoutesConfig = {
       title: 'Login',
     },
     component: LoginComponent,
+  },
+
+  404: {
+    path: '404',
+    data: {
+      title: 'The page you’re looking for was not found!',
+    },
+    component: PageNotFoundComponent,
+  },
+
+  error: {
+    path: '**',
+    redirectTo: '/404',
   },
 
   main: {
