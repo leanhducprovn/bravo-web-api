@@ -42,19 +42,19 @@
           <nav aria-label="...">
             <ul class="pagination justify-content-center">
               <li class="page-item" [class]="check ? 'disabled' : ''">
-                <a class="page-link" href="/product?page={{ previous }}">Previous</a>
+                <a class="page-link" [routerLink]="['/product']" [queryParams]="{page: previous}">Previous</a>
               </li>
               <li class="page-item" [class]="check ? 'disabled' : ''">
-                <a class="page-link" href="/product?page={{ previous }}">{{ previous }}</a>
+                <a class="page-link" [routerLink]="['/product']" [queryParams]="{page: previous}">{{ previous }}</a>
               </li>
               <li class="page-item active" aria-current="page">
-                <a class="page-link" href="/product?page={{ page }}">{{ page }}</a>
+                <a class="page-link" [routerLink]="['/product']" [queryParams]="{page: page}">{{ page }}</a>
               </li>
               <li class="page-item">
-                <a class="page-link" href="/product?page={{ next }}">{{ next }}</a>
+                <a class="page-link" [routerLink]="['/product']" [queryParams]="{page: next}">{{ next }}</a>
               </li>
               <li class="page-item">
-                <a class="page-link" href="/product?page={{ next }}">Next</a>
+                <a class="page-link" [routerLink]="['/product']" [queryParams]="{page: next}">Next</a>
               </li>
             </ul>
           </nav>
