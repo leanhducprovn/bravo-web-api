@@ -2,7 +2,7 @@
   <div class="vh-100 d-flex align-items-center justify-content-center">
     <div class="row col-sm-6">
       <h3 class="text-center">Đăng nhập</h3>
-      <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+      <form [formGroup]="loginForm">
         <div class="form-group mt-2">
           <label for="username">Tài khoản</label>
           <input type="text" formControlName="username" class="form-control shadow-sm bg-white rounded"
@@ -25,7 +25,7 @@
         </div>
         <div class="form-group mt-2 d-flex justify-content-end mt-3">
           <button [disabled]="true" class="btn btn-light me-2 shadow-lg bg-white rounded">Đăng ký</button>
-          <button (click)="loading ? onCancel() : true" [class]="loading ? 'btn-danger' : 'btn-success'"
+          <button (click)="loading ? onCancel() : onSubmit()" [class]="loading ? 'btn-danger' : 'btn-success'"
             class="btn shadow-lg rounded">
             <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
             {{ loading ? "Hủy" + " " + "(" + counter + ")" : "Đăng nhập" }}

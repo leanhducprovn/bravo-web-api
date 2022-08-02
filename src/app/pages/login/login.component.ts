@@ -15,7 +15,7 @@ export class LoginComponent implements OnInit, OnDestroy {
   public loginForm: FormGroup;
   public loading = false;
   public submitted = false;
-  public counter = 4;
+  public counter: number;
   private _countDown: Subscription;
   private _returnUrl: string;
   private _login: Subscription;
@@ -51,11 +51,13 @@ export class LoginComponent implements OnInit, OnDestroy {
 
   public onSubmit() {
     this.submitted = true;
+    this._countDown?.unsubscribe();
     if (this.loginForm.invalid) {
       return;
     } else {
       this.loading = true;
-      this._countDown = timer(0, 1000).subscribe(() => --this.counter);
+      this.counter = 3;
+      this._countDown = timer(1000, 1000).subscribe(() => --this.counter);
       let _url = 'http://192.168.0.74:6886/token';
       let _params = new HttpParams({
         fromObject: {
@@ -64,29 +66,29 @@ export class LoginComponent implements OnInit, OnDestroy {
           grant_type: 'password',
         },
       });
-      setTimeout(() => {
-        this.http
-          .post(_url, _params)
-          // .pipe(delay(3000))
-          .subscribe(
-            (response) => {
-              localStorage.setItem('logged', JSON.stringify(true));
-            },
-            (error) => {
-              this.loading = false;
-              this.noti.notify('error', 'Tài khoản hoặc mật khẩu không đúng!');
-            },
-            () => {
-              this.loading = false;
-              this.noti.notify('success', 'Đăng nhập thành công!');
-              this.router.navigate([this._returnUrl]);
-            }
-          );
-      }, 3000);
+      this._login = this.http
+        .post(_url, _params)
+        .pipe(delay(3000))
+        .subscribe(
+          (response) => {
+            localStorage.setItem('logged', JSON.stringify(true));
+          },
+          (error) => {
+            this.loading = false;
+            this.noti.notify('error', 'Tài khoản hoặc mật khẩu không đúng!');
+          },
+          () => {
+            this.loading = false;
+            this.noti.notify('success', 'Đăng nhập thành công!');
+            this.router.navigate([this._returnUrl]);
+          }
+        );
     }
   }
 
   public onCancel() {
+    this.noti.notify('info', 'Hủy thành công!');
     this.loading = false;
+    this._login.unsubscribe();
   }
 }
