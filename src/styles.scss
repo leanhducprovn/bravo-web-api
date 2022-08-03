@@ -30,4 +30,9 @@ pre {
 
 a {
     cursor: pointer;
+    color: #119489;
+
+    &:hover {
+        color: #008075;
+    }
 }
