@@ -1,5 +1,8 @@
 import { ExecuteComponent } from '../pages/bravowebapi/execute/execute.component';
 import { ProductComponent } from '../pages/bravowebapi/product/product.component';
+import { ElearningMainComponent } from '../pages/elearning/elearning-main/elearning-main.component';
+import { ElearningComponent } from '../pages/elearning/elearning.component';
+import { UnsubscribeComponent } from '../pages/elearning/unsubscribe/unsubscribe.component';
 import { HomeComponent } from '../pages/home/home.component';
 import { LoginComponent } from '../pages/login/login.component';
 import { MainComponent } from '../pages/main/main.component';
@@ -53,6 +56,26 @@ const RoutesConfig = {
           title: 'Product',
         },
         component: ProductComponent,
+      },
+      {
+        path: 'elearning',
+        data: {
+          title: 'Elearning',
+        },
+        component: ElearningComponent,
+        children: [
+          {
+            path: '',
+            component: ElearningMainComponent,
+          },
+          {
+            path: 'unsubscribe',
+            data: {
+              title: 'Unsubscribe',
+            },
+            component: UnsubscribeComponent,
+          },
+        ],
       },
     ],
     component: MainComponent,

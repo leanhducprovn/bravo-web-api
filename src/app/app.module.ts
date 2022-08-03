@@ -17,6 +17,9 @@ import { ExecuteComponent } from './pages/bravowebapi/execute/execute.component'
 import { BackToTopComponent } from './utilities/back-to-top/back-to-top.component';
 import { ProductComponent } from './pages/bravowebapi/product/product.component';
 import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.component';
+import { ElearningComponent } from './pages/elearning/elearning.component';
+import { UnsubscribeComponent } from './pages/elearning/unsubscribe/unsubscribe.component';
+import { ElearningMainComponent } from './pages/elearning/elearning-main/elearning-main.component';
 
 @NgModule({
   declarations: [
@@ -31,6 +34,9 @@ import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.com
     BackToTopComponent,
     ProductComponent,
     PageNotFoundComponent,
+    ElearningComponent,
+    UnsubscribeComponent,
+    ElearningMainComponent,
   ],
   imports: [
     BrowserModule,
