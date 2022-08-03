@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { delay } from 'rxjs/operators';
+import { delay, expand, reduce } from 'rxjs/operators';
+import { EMPTY } from 'rxjs';
 
 @Component({
   selector: 'app-home',
@@ -56,6 +57,38 @@ export class HomeComponent implements OnInit {
           this.isArticleList = true;
         }
       );
+  }
+
+  private getDataBlogger() {
+    let _blogger = 'https://www.code.pro.vn';
+    let _api = 'https://www.googleapis.com/blogger/v3/blogs/';
+    let _key = 'AIzaSyB_oNm3jJm3m-eyPARIo--bTjRNTcVeZiU';
+    let _request = 'byurl';
+    let _param = `?url=${_blogger}`;
+    let _operator = '&';
+    let _page = '';
+    let _url = _api + _request + _param + _operator + 'key=' + _key + _page;
+    this.http.get(_url).subscribe((res: any) => {
+      let _id = res.id;
+      let _operator = '/posts?';
+      let _url = _api + _id + _operator + 'key=' + _key;
+      this.http
+        .get(_url)
+        .pipe(
+          expand((data: any) =>
+            data.nextPageToken
+              ? this.http.get(_url + `&pageToken=${data.nextPageToken}`)
+              : EMPTY
+          ),
+          reduce(
+            (previous: any, current: any) => previous.concat(current.items),
+            []
+          )
+        )
+        .subscribe((res: any) => {
+          console.log(res);
+        });
+    });
   }
 
   public onScroll() {
