@@ -3,6 +3,7 @@ import { BrowserModule, Title } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
 import { NotifierModule } from 'angular-notifier';
+import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
@@ -46,6 +47,7 @@ import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.com
         },
       },
     }),
+    InfiniteScrollModule,
   ],
   providers: [Title],
   bootstrap: [AppComponent],
