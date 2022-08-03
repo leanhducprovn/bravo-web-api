@@ -1,1 +1,38 @@
-Đang cập nhật
+<div class="row g-4">
+  <div class="col-sm-3">
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">Subscription 1</h5>
+        <p class="card-text">{{ valueSubscription1 }}</p>
+        <button (click)="onUnsubscribe1()" type="button" class="btn btn-danger">Hủy</button>
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-3">
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">Subscription 2</h5>
+        <p class="card-text">{{ subscription2 | async }}</p>
+        <button (click)="onUnsubscribe2()" type="button" class="btn btn-danger" disabled>Hủy</button>
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-3">
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">Subscription 3</h5>
+        <p class="card-text">{{ valueSubscription3 }}</p>
+        <button (click)="onUnsubscribe3()" type="button" class="btn btn-danger" disabled>Hủy</button>
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-3">
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">Subscription 4</h5>
+        <p class="card-text">{{ valueSubscription4 }}</p>
+        <button (click)="onUnsubscribe4()" type="button" class="btn btn-danger" disabled>Hủy</button>
+      </div>
+    </div>
+  </div>
+</div>
