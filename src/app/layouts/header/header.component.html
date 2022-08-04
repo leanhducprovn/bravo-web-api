@@ -29,6 +29,19 @@
             <li><a class='dropdown-item' routerLink="/">All</a></li>
           </ul>
         </li>
+        <li class='nav-item dropdown'>
+          <a class='nav-link dropdown-toggle' routerLink="/pictures" id='navbarDropdown' role='button'
+            data-bs-toggle='dropdown' aria-expanded='false'>Pictures</a>
+          <ul class='dropdown-menu' aria-labelledby='navbarDropdown'>
+            <li><a class='dropdown-item' routerLink="/pictures/dog">Dog</a></li>
+            <li><a class='dropdown-item disabled' routerLink="/">Cat</a></li>
+            <li><a class='dropdown-item disabled' routerLink="/">Tree</a></li>
+            <li>
+              <hr class='dropdown-divider' />
+            </li>
+            <li><a class='dropdown-item' routerLink="/pictures">All</a></li>
+          </ul>
+        </li>
         <li class="nav-item"><a (click)="onExecute()" class="nav-link">Execute</a></li>
         <li class="nav-item"><a routerLink="/elearning" class="nav-link">Elearning</a></li>
         <li class="nav-item"><a class="nav-link disabled" routerLink="/">Disabled</a></li>

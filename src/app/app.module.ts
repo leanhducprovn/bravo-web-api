@@ -20,6 +20,9 @@ import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.com
 import { ElearningComponent } from './pages/elearning/elearning.component';
 import { UnsubscribeComponent } from './pages/elearning/unsubscribe/unsubscribe.component';
 import { ElearningMainComponent } from './pages/elearning/elearning-main/elearning-main.component';
+import { PicturesComponent } from './pages/pictures/pictures.component';
+import { PicturesMainComponent } from './pages/pictures/pictures-main/pictures-main.component';
+import { DogComponent } from './pages/pictures/dog/dog.component';
 
 @NgModule({
   declarations: [
@@ -37,6 +40,9 @@ import { ElearningMainComponent } from './pages/elearning/elearning-main/elearni
     ElearningComponent,
     UnsubscribeComponent,
     ElearningMainComponent,
+    PicturesComponent,
+    PicturesMainComponent,
+    DogComponent,
   ],
   imports: [
     BrowserModule,
