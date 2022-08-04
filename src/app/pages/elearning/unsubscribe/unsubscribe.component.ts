@@ -22,6 +22,9 @@ export class UnsubscribeComponent implements OnInit {
   private _subscription5: Observable<any>;
   public valueSubscription5!: number;
 
+  private _subscription7 = new Subscription();
+  public valueSubscription7!: number;
+
   private _notifier1 = new Subject();
   private _notifier2 = new Subject();
 
@@ -58,6 +61,11 @@ export class UnsubscribeComponent implements OnInit {
       obsArr[i].pipe(takeUntil(this._notifier2)).subscribe((value: number) => {
         console.log('Observable', i, '=>', value);
       });
+      this._subscription7.add(
+        interval(i).subscribe((value: number) => {
+          console.log('Subscription', '=>', value);
+        })
+      );
     }
   }
 
@@ -79,5 +87,9 @@ export class UnsubscribeComponent implements OnInit {
   public onUnsubscribe6() {
     this._notifier2.next();
     this._notifier2.complete();
+  }
+
+  public onUnsubscribe7() {
+    this._subscription7.unsubscribe();
   }
 }
