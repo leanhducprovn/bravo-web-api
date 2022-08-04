@@ -1,14 +1,14 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { delay, expand, reduce } from 'rxjs/operators';
-import { EMPTY } from 'rxjs';
+import { EMPTY, Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss'],
 })
-export class HomeComponent implements OnInit {
+export class HomeComponent implements OnInit, OnDestroy {
   public articleList: Article[] = [];
   public isLoading: boolean = false;
   public isArticleList: boolean = false;
@@ -18,10 +18,16 @@ export class HomeComponent implements OnInit {
   private _start: number = 0;
   private _end: number = this._paginate;
 
+  private _subscription!: Subscription;
+
   constructor(private http: HttpClient) {}
 
   public ngOnInit(): void {
     this.getData();
+  }
+
+  public ngOnDestroy(): void {
+    this._subscription.unsubscribe();
   }
 
   private getData() {
@@ -29,7 +35,7 @@ export class HomeComponent implements OnInit {
     this.isArticleList = false;
     let _url =
       'https://newsapi.org/v2/everything?domains=vnexpress.net&apiKey=8ce6b975213149d28540ddd6292ea73d';
-    this.http
+    this._subscription = this.http
       .get(_url)
       .pipe(delay(1000))
       .subscribe(

@@ -1,11 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { Subscription } from 'rxjs';
 @Component({
   selector: 'app-dog',
   templateUrl: './dog.component.html',
   styleUrls: ['./dog.component.scss'],
 })
-export class DogComponent implements OnInit {
+export class DogComponent implements OnInit, OnDestroy {
   public dogs: Dog[] = [];
   public isLoading: boolean = false;
   public isDogList: boolean = false;
@@ -14,10 +15,16 @@ export class DogComponent implements OnInit {
   private _start: number = 0;
   private _end: number = this._paginate;
 
+  private _subscription!: Subscription;
+
   constructor(private http: HttpClient) {}
 
   public ngOnInit(): void {
     this.getData();
+  }
+
+  public ngOnDestroy(): void {
+    this._subscription.unsubscribe();
   }
 
   private getData() {
@@ -29,7 +36,7 @@ export class DogComponent implements OnInit {
     let _httpsUrls = true;
     let _params = `?count=${_count}&urls=${_urls}&httpsUrls=${_httpsUrls}`;
     let _url = _api + _params;
-    this.http.get(_url).subscribe(
+    this._subscription = this.http.get(_url).subscribe(
       (res: any) => {
         for (let i = 0; i < res.length; i++) {
           this._dogs.push(new Dog(res[i]));
