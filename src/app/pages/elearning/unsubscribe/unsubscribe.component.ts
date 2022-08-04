@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Observable, Subscription, interval } from 'rxjs';
-import { first, take } from 'rxjs/operators';
+import { Observable, Subscription, interval, Subject } from 'rxjs';
+import { first, take, takeUntil } from 'rxjs/operators';
 
 @Component({
   selector: 'app-unsubscribe',
@@ -18,6 +18,12 @@ export class UnsubscribeComponent implements OnInit {
 
   private _subscription4: Observable<any>;
   public valueSubscription4!: number;
+
+  private _subscription5: Observable<any>;
+  public valueSubscription5!: number;
+
+  private _notifier1 = new Subject();
+  private _notifier2 = new Subject();
 
   constructor() {}
 
@@ -40,6 +46,19 @@ export class UnsubscribeComponent implements OnInit {
       .subscribe((value: number) => {
         this.valueSubscription4 = value;
       });
+
+    this._subscription5 = interval(1000);
+    this._subscription5
+      .pipe(takeUntil(this._notifier1))
+      .subscribe((value: number) => (this.valueSubscription5 = value));
+
+    for (let i = 0; i < 100; i++) {
+      let obsArr = [];
+      obsArr[i] = interval(1000);
+      obsArr[i].pipe(takeUntil(this._notifier2)).subscribe((value: number) => {
+        console.log('Observable', i, '=>', value);
+      });
+    }
   }
 
   public onUnsubscribe1() {
@@ -51,4 +70,14 @@ export class UnsubscribeComponent implements OnInit {
   public onUnsubscribe3() {}
 
   public onUnsubscribe4() {}
+
+  public onUnsubscribe5() {
+    this._notifier1.next();
+    this._notifier1.complete();
+  }
+
+  public onUnsubscribe6() {
+    this._notifier2.next();
+    this._notifier2.complete();
+  }
 }
