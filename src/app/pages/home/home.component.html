@@ -1,8 +1,9 @@
-<div class="container mt-4" infinite-scroll (scrolled)="onScroll()">
+<div class="container mt-4">
   <div class="row">
     <div class="card">
       <div class="card-body">
-        <div *ngIf="isArticleList" class="row row-cols-1 row-cols-md-4 g-4">
+        <div *ngIf="isArticleList" class="row row-cols-1 row-cols-md-4 g-4" infinite-scroll (scrolled)="onScroll()"
+          [infiniteScrollDistance]="0">
           <div class="col" *ngFor="let article of articleList">
             <div class="card h-100">
               <a href="{{article.url}}" target="_blank">
