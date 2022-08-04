@@ -3,7 +3,7 @@
     <div class="card">
       <div class="card-body">
         <h5 class="card-title">Subscription 1</h5>
-        <p class="card-text">{{ valueSubscription1 }}</p>
+        <p class="card-text">Interval: {{ valueSubscription1 }}</p>
         <button (click)="onUnsubscribe1()" type="button" class="btn btn-danger">Hủy</button>
       </div>
     </div>
@@ -12,7 +12,7 @@
     <div class="card">
       <div class="card-body">
         <h5 class="card-title">Subscription 2</h5>
-        <p class="card-text">{{ subscription2 | async }}</p>
+        <p class="card-text">Interval (async): {{ subscription2 | async }}</p>
         <button (click)="onUnsubscribe2()" type="button" class="btn btn-danger" disabled>Hủy</button>
       </div>
     </div>
@@ -21,7 +21,7 @@
     <div class="card">
       <div class="card-body">
         <h5 class="card-title">Subscription 3</h5>
-        <p class="card-text">{{ valueSubscription3 }}</p>
+        <p class="card-text">Take: {{ valueSubscription3 }}</p>
         <button (click)="onUnsubscribe3()" type="button" class="btn btn-danger" disabled>Hủy</button>
       </div>
     </div>
@@ -30,7 +30,7 @@
     <div class="card">
       <div class="card-body">
         <h5 class="card-title">Subscription 4</h5>
-        <p class="card-text">{{ valueSubscription4 }}</p>
+        <p class="card-text">First: {{ valueSubscription4 }}</p>
         <button (click)="onUnsubscribe4()" type="button" class="btn btn-danger" disabled>Hủy</button>
       </div>
     </div>
